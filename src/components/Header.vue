@@ -24,7 +24,7 @@ export default {
     align-items: center;
     justify-content: flex-end;
     border:1 px solid black;
-    box-shadow: 1px 1px #C6C6C6;
+    box-shadow: 1px 1px 5px #C6C6C6;
     position: relative;
 }
 .options{

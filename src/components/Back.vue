@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="back">
-            <img src="../assets/arrowLeft.svg" alt="">
+            <img src="../assets/img/arrowLeft.svg" alt="">
             <h1>{{msg}}</h1>
         </div>
     </div>
