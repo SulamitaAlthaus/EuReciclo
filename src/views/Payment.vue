@@ -11,6 +11,22 @@
     </div>
 
     <div class="content">
+      <div class="path">
+        <div class="pathDiv">
+          <img src="../assets/img/check.svg" class="circle" />
+          <h1>Carrinho</h1>
+          <img src="../assets/img/arrow.svg" class="arrow" />
+        </div>
+        <div class="pathDiv">
+          <img src="../assets/img/circle-two.svg" class="circle" />
+          <h1>Pagamento</h1>
+          <img src="../assets/img/arrow.svg" class="arrow" />
+        </div>
+        <div class="pathDiv">
+          <img src="../assets/img/circle-three.svg" class="circle" />
+          <h1>Pedido Finalizado</h1>
+        </div>
+      </div>
       <label for="">Número do cartão</label>
       <input
         id="numberCard"
@@ -129,7 +145,7 @@ export default {
   methods: {
     async setPayment() {
       this.validation = true;
-      console.log(this.installment)
+      console.log(this.installment);
       if (this.numberCard.split(" ").join("").length < 16) {
         this.validationNumberCard = true;
         return;
@@ -173,6 +189,30 @@ export default {
 .card {
   position: absolute;
   margin: 15% 8%;
+}
+.path {
+  width: 100%;
+  display: flex;
+}
+.pathDiv {
+  display: flex;
+  width: 35%;
+  align-items: center;
+  justify-content: left;
+}
+.pathDiv h1 {
+  font-size: 18px;
+  color: #01ee55;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: 500;
+}
+.pathDiv img {
+  width: 35px;
+  margin: 2%;
+}
+.arrow {
+  height: 30px;
+  padding-left: 15%;
 }
 .content {
   display: flex;
