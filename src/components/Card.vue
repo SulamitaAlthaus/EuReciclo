@@ -67,7 +67,7 @@ export default {
 .container {
   display: grid;
   width: 30vw;
-  height: 250px;
+  height: 38vh;
   background: radial-gradient(#707070, #363636);
   border-radius: 10px;
   box-shadow: 1px 5px 10px #c6c6c6;
@@ -107,14 +107,5 @@ export default {
 .footer h1 {
   font-size: 15px;
   font-weight: normal;
-}
-@media screen and (max-width: 768px) {
-  .container {
-    width: 60vw;
-    height: 150px;
-  }
-  .content {
-    font-size: 8px;
-  }
 }
 </style>
