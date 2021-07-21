@@ -1,6 +1,9 @@
 <template>
   <div class="container">
-    <Header />
+    <Header class="header" />
+    <div class="backMobile">
+      <Back msg="Etapa 2 de 3" />
+    </div>
     <div class="card">
       <Card
         :numberCard="numberCard ? numberCard : '5555 5555 5555 5555'"
@@ -27,7 +30,7 @@
           <h1>Pedido Finalizado</h1>
         </div>
       </div>
-      <label for="">Número do cartão</label>
+      <label>Número do cartão</label>
       <input
         id="numberCard"
         v-model="numberCard"
@@ -40,7 +43,7 @@
         >Número do cartão inválido</span
       >
 
-      <label for="">Nome</label>
+      <label>Nome</label>
       <input
         id="name"
         v-model="name"
@@ -81,8 +84,7 @@
           />
           <span v-if="validation && !cvv">CVV não informado</span>
         </label>
-
-        <label
+        <label class="cpf"
           >CPF
           <input
             id="cpf"
@@ -96,7 +98,20 @@
         </label>
       </div>
 
-      <label for="">Número de parcelas</label>
+      <div class="cpfMobile">
+        <label>CPF </label>
+        <input
+          id="cpf"
+          v-model="cpf"
+          v-mask="'###.###.###-##'"
+          :style="{
+            borderBottom: validation && !cpf ? '1px solid #FF0000' : null,
+          }"
+        />
+        <span v-if="validation && !cpf">CPF inválido</span>
+      </div>
+
+      <label>Número de parcelas</label>
       <select
         id="installment"
         v-model="installment"
@@ -116,7 +131,12 @@
 
       <button @click="setPayment">Pagar</button>
     </div>
-    <Back msg="Alterar forma de pagamento" />
+    <div class="back">
+      <Back msg="Alterar forma de pagamento" />
+    </div>
+    <div v-if="loading" class="loading">
+      <img src="../assets/img/loading.gif" />
+    </div>
   </div>
 </template>
 
@@ -141,11 +161,11 @@ export default {
     installment: "",
     validation: false,
     validationNumberCard: false,
+    loading: false,
   }),
   methods: {
     async setPayment() {
       this.validation = true;
-      console.log(this.installment);
       if (this.numberCard.split(" ").join("").length < 16) {
         this.validationNumberCard = true;
         return;
@@ -161,6 +181,8 @@ export default {
         return;
       } else {
         this.validationNumberCard = false;
+        this.loading = true;
+
         //   await api
         //     .post(`/newsolicitation`, {
         //       numberCard: this.numberCard,
@@ -186,6 +208,9 @@ export default {
 .container {
   overflow: hidden;
 }
+.backMobile {
+  display: none;
+}
 .card {
   position: absolute;
   margin: 15% 8%;
@@ -207,7 +232,7 @@ export default {
   font-weight: 500;
 }
 .pathDiv img {
-  width: 35px;
+  width: 15%;
   margin: 2%;
 }
 .arrow {
@@ -261,6 +286,9 @@ img {
   width: 8%;
   cursor: pointer;
 }
+.cpfMobile {
+  display: none;
+}
 button {
   background-color: #01ee55;
   border: none;
@@ -274,5 +302,68 @@ button {
 }
 button:hover {
   box-shadow: 1px 5px 10px #c6c6c6;
+}
+.loading {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background: rgba(207, 207, 207, 0.5);
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  top: 0;
+}
+@media screen and (max-width: 1024px) {
+  .pathDiv h1 {
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .header {
+    display: none;
+  }
+  .path {
+    display: none;
+  }
+  .pathDiv h1 {
+    font-size: 15px;
+  }
+  .back {
+    display: none;
+  }
+  .backMobile {
+    display: block;
+  }
+  .card {
+    top: 10%;
+    margin: 15%;
+  }
+  .content {
+    float: none;
+    width: 80%;
+    margin: 25% auto 0 auto;
+    font-size: 15px;
+  }
+  img {
+    width: 10%;
+  }
+  .cpf {
+    display: none;
+  }
+  .cpfMobile {
+    display: grid;
+  }
+  .cardInformation label {
+    width: 45%;
+  }
+  .cardInformation span {
+    display: flex;
+  }
+
+  button {
+    width: 100%;
+    margin: 5% auto;
+  }
 }
 </style>
