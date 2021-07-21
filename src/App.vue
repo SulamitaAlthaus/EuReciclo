@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <Payment/>
+    <Payment />
   </div>
 </template>
 
 <script>
-import Payment from './views/Payment.vue'
+import Payment from "./views/Payment.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Payment
-  }
-}
+    Payment,
+  },
+};
 </script>
 
 <style>
