@@ -357,9 +357,6 @@ button:hover {
   .cardInformation label {
     width: 45%;
   }
-  .cardInformation span {
-    display: flex;
-  }
 
   button {
     width: 100%;

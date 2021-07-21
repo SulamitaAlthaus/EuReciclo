@@ -7,7 +7,7 @@
     - Cadastrar Cartão
     
 ### Demonstração da aplicação 
-    https://eureciclo-9428d.web.app/
+    https://klutch-app.herokuapp.com/
 
     Caso ocorra algum erro ao tentar acessar a primeira vez, atualize a página e teste novamente.
 
